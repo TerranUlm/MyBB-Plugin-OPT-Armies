@@ -3648,13 +3648,17 @@ function opt_armies_get_uid_by_username($username)
 
 function opt_armies_get_usergroups($uid)
 {
-	global $db;
-	
-	$query = $db->simple_select('users', 'usergroup, additionalgroups', 'uid=' . intval($uid));
-	$data  = $db->fetch_array($query);
-	$db->free_result($query);
-	$usergroups = explode(',', $data[ 'usergroup' ] . ',' . $data[ 'additionalgroups' ]);
-	return $usergroups;
+    global $db;
+    
+    $query = $db->simple_select('users', 'usergroup, additionalgroups', 'uid=' . intval($uid));
+    $data  = $db->fetch_array($query);
+    $db->free_result($query);
+    $usergroup_string=$data['usergroup'];
+    if(!empty($data['additionalgroups']))
+        $usergroup_string.=','.$data['additionalgroups'];
+    $usergroups = explode(',', $usergroup_string);
+    $usergroups = array_diff( $usergroups, array(''),array(' '));//remove all empty elements
+    return $usergroups;
 }
 
 function opt_armies_get_groupslead($uid)
