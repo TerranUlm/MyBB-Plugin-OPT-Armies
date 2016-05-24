@@ -1860,7 +1860,7 @@ function opt_armies_misc_start_17()
 				$army_members += count(opt_armies_get_groupmembers($army[ 'uugid' ]));
 			}
 		
-			if ($army[ 'is locked' ] == 1)
+			if ($army[ 'is_locked' ] == 1)
 			{
 				$army_status = $lang->opt_armies_army_is_locked;
 			}
@@ -3077,7 +3077,7 @@ function opt_armies_is_army_temp_locked($aid)
 		{
 			$army_members += count(opt_armies_get_groupmembers($army[ 'uugid' ]));
 		}
-
+		$army['members'] = $army_members;
 		$armies[ $army[ 'aid' ] ] = $army;
 		if ($army[ 'members' ] < $min_members)
 		{
