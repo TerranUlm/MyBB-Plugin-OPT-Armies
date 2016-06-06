@@ -59,9 +59,9 @@ function opt_armies_info()
 		'website' => 'http://opt-community.de/',
 		'author' => 'Dieter Gobbers (@Terran_ulm)',
 		'authorsite' => 'http://opt-community.de/',
-		'version' => '1.0.4',
+		'version' => '1.1.0',
 		'guid' => '',
-		'compatibility' => '16*'
+		'compatibility' => '18*'
 	);
 }
 
