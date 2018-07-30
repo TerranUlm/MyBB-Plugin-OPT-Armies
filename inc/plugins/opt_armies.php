@@ -3803,7 +3803,7 @@ function opt_armies_update_usergroups($uid, $usergroups, $primary_group = 0)
 	);
 	$db->update_query('users', $update_record, 'uid=' . $uid);
 	
-	if (function_exists('grouporder_reorder_user'))
+	if (function_exists('groupsort_reorder_user'))
 	{
 		$query          = $db->simple_select('usergroups', '*', '', array(
 			'order_by' => 'disporder',
@@ -3817,7 +3817,7 @@ function opt_armies_update_usergroups($uid, $usergroups, $primary_group = 0)
 		}
 		$db->free_result($query);
 		
-		grouporder_reorder_user($uid, $all_usergroups);
+		groupsort_reorder_user($uid, $all_usergroups);
 	}
 }
 
